@@ -4,9 +4,8 @@ import { EVENTS } from "../../data/data";
 
 /* ── Category Tab ────────────────────────────────────────────── */
 const TABS = [
-  { key: "technical",    label: "⚔️  Technical",     color: "#c0102a" },
-  { key: "nontechnical", label: "🎭  Non-Technical",  color: "#1e6fd9" },
-  { key: "workshops",    label: "🛠️  Workshops",      color: "#d4a82a" },
+  { key: "technical",    label: "⚔️ Technical",        color: "#c0102a" },
+  { key: "nontechnical", label: "🗺️ Non-Technical",    color: "#1e6fd9" }
 ];
 
 /* ── Event Modal ─────────────────────────────────────────────── */
@@ -31,7 +30,7 @@ function EventModal({ event, onClose, onRegister }) {
             background: "linear-gradient(160deg, #08000f 0%, #040008 100%)",
             border: "1px solid rgba(192,16,42,0.25)",
             borderRadius: "16px",
-            padding: "2rem",
+            padding: "clamp(1.2rem, 5vw, 2rem)",
             maxWidth: "600px",
             width: "100%",
             maxHeight: "90vh",
@@ -69,13 +68,12 @@ function EventModal({ event, onClose, onRegister }) {
           </p>
 
           {/* Info grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
             {[
               { icon: "👥", label: "Team Size", value: event.teamSize },
               { icon: "📅", label: "Date",      value: event.date },
               { icon: "🕐", label: "Time",      value: event.time },
               { icon: "📍", label: "Venue",     value: event.venue },
-              { icon: "🏆", label: "Prize",     value: event.prize },
             ].map(({ icon, label, value }) => (
               <div key={label} style={{
                 background: "rgba(255,255,255,0.04)",
@@ -171,11 +169,6 @@ function EventCard({ event, index, onClick }) {
           borderRadius: "100px", padding: "0.2rem 0.7rem",
           fontSize: "0.7rem", color: "rgba(192,16,42,0.8)", fontFamily: "Cinzel,serif",
         }}>👥 {event.teamSize}</span>
-        <span style={{
-          background: "rgba(30,111,217,0.08)", border: "1px solid rgba(30,111,217,0.2)",
-          borderRadius: "100px", padding: "0.2rem 0.7rem",
-          fontSize: "0.7rem", color: "rgba(80,150,255,0.9)", fontFamily: "Cinzel,serif",
-        }}>🏆 {event.prize}</span>
       </div>
 
       <div style={{
@@ -229,7 +222,7 @@ export default function Events() {
             The Treasure Map
           </h2>
           <p style={{ color: "rgba(232,223,200,0.55)", maxWidth: "500px", margin: "0 auto", lineHeight: 1.7, fontSize: "0.95rem" }}>
-            Chart your course through technical battles, creative challenges, and knowledge workshops.
+            Chart your course through technical battles and creative challenges.
           </p>
         </motion.div>
 

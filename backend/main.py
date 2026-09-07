@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
-from fastapi import FastAPI, Form, File, UploadFile, HTTPException, Depends
+from fastapi import FastAPI, Form, File, UploadFile, HTTPException, Depends, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -22,8 +22,12 @@ import aiofiles
 from database import get_db, init_db
 
 # ── Setup ─────────────────────────────────────────────────────
-UPLOAD_DIR = Path(__file__).parent / "uploads"
-UPLOAD_DIR.mkdir(exist_ok=True)
+upload_path_env = os.environ.get("UPLOAD_DIR")
+if upload_path_env:
+    UPLOAD_DIR = Path(upload_path_env)
+else:
+    UPLOAD_DIR = Path(__file__).parent / "uploads"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(title="Nexura'26 API", version="1.1.0")
 
@@ -50,9 +54,20 @@ def generate_reg_id() -> str:
     return f"NXR-{ts}-{rand}"
 
 
+# ── Webhook URL ────────────────────────────────────────────────
+GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxOr-KkIcKiRCEh-GOiRdPhg0swBUiQMtWpHhem4mcn83kbteeI6biod4LGkylgvJ5dVQ/exec"
+
+def send_to_google_sheet(data: dict):
+    try:
+        import requests
+        requests.post(GOOGLE_SHEET_WEBHOOK_URL, json=data, timeout=10)
+    except Exception as e:
+        print(f"Error sending to Google Sheet: {e}")
+
 # ── Registration & Payment Endpoint ───────────────────────────
 @app.post("/api/register")
 async def register(
+    background_tasks: BackgroundTasks,
     event:          str                   = Form(...),
     name:           str                   = Form(...),
     college:        str                   = Form(...),
@@ -111,6 +126,21 @@ async def register(
         conn.commit()
     finally:
         conn.close()
+
+    # Send data to Google Sheets webhook
+    background_tasks.add_task(send_to_google_sheet, {
+        "timestamp": timestamp,
+        "registration_id": reg_id,
+        "event": event,
+        "name": name,
+        "college": college,
+        "email": email,
+        "phone": phone,
+        "team_size": team_size,
+        "food": food,
+        "payment_method": payment_method,
+        "transaction_id": tx_id
+    })
 
     return {
         "registration_id": reg_id,

@@ -7,7 +7,6 @@ import { EVENTS } from "../../data/data";
 const ALL_EVENTS = [
   ...EVENTS.technical,
   ...EVENTS.nontechnical,
-  ...EVENTS.workshops,
 ];
 
 /* ── Dropzone ────────────────────────────────────────────────── */
@@ -114,7 +113,7 @@ function TicketModal({ data, onClose }) {
           <div style={{ fontSize: "1.3rem", color: "#f5c842", fontWeight: 700 }}>{data.registration_id}</div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem", marginBottom: "2rem", textAlign: "left" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "0.75rem", marginBottom: "2rem", textAlign: "left" }}>
           {[
             { label: "Name",  value: data.name },
             { label: "Event", value: data.event },
@@ -134,7 +133,7 @@ function TicketModal({ data, onClose }) {
         </div>
 
         <button onClick={() => navigate("/")} className="btn-gold" style={{ width: "100%", padding: "0.85rem", borderRadius: "8px", fontSize: "0.85rem" }}>
-          ⚓ &nbsp; Back to Nexura'26
+          ⚓ &nbsp; Back to Nexaura'26
         </button>
       </motion.div>
     </motion.div>
@@ -250,7 +249,7 @@ export default function Registration() {
             Join the Crew
           </h2>
           <p style={{ color: "rgba(232,223,200,0.55)", lineHeight: 1.7, fontSize: "0.95rem" }}>
-            Register for Nexura'26 events. Fill in your details and upload your payment screenshot.
+            Register for Nexaura'26 events. Fill in your details and upload your payment screenshot.
           </p>
         </motion.div>
 
@@ -292,15 +291,12 @@ export default function Registration() {
                   <optgroup label="🎭 Non-Technical">
                     {EVENTS.nontechnical.map(ev => <option key={ev.id} value={ev.name}>{ev.name}</option>)}
                   </optgroup>
-                  <optgroup label="🛠️ Workshops">
-                    {EVENTS.workshops.map(ev => <option key={ev.id} value={ev.name}>{ev.name}</option>)}
-                  </optgroup>
                 </select>
                 {errors.event && <p style={{ color: "#ef4444", fontSize: "0.75rem", marginTop: "0.35rem" }}>{errors.event}</p>}
               </div>
 
               {/* Name + College */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.5rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
                 <div>
                   <label className="form-label">Full Name *</label>
                   <input className="form-input" value={form.name} onChange={e => set("name", e.target.value)} placeholder="Your full name" />
@@ -314,7 +310,7 @@ export default function Registration() {
               </div>
 
               {/* Email + Phone */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.5rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
                 <div>
                   <label className="form-label">Email Address *</label>
                   <input className="form-input" type="email" value={form.email} onChange={e => set("email", e.target.value)} placeholder="you@email.com" />

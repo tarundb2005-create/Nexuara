@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 
-const ADMIN_PASS = "nexura2026"; // In production, use proper auth
+const ADMIN_PASS = "nexaura2026"; // In production, use proper auth
 
 function StatusBadge({ status }) {
   const colors = {
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
       const url = URL.createObjectURL(res.data);
       const a   = document.createElement("a");
       a.href    = url;
-      a.download = `nexura26_registrations_${Date.now()}.csv`;
+      a.download = `nexaura26_registrations_${Date.now()}.csv`;
       a.click();
     } catch {
       // Client-side CSV fallback
@@ -108,7 +108,7 @@ export default function AdminDashboard() {
       const url  = URL.createObjectURL(blob);
       const a    = document.createElement("a");
       a.href     = url;
-      a.download = `nexura26_registrations.csv`;
+      a.download = `nexaura26_registrations.csv`;
       a.click();
     }
   };
@@ -144,7 +144,7 @@ export default function AdminDashboard() {
             Captain's Log
           </h1>
           <p style={{ color: "rgba(232,223,200,0.5)", fontSize: "0.85rem", marginBottom: "2rem" }}>
-            Admin access to Nexura'26 registration data
+            Admin access to Nexaura'26 registration data
           </p>
           <form onSubmit={login}>
             <div style={{ marginBottom: "1rem" }}>
@@ -163,7 +163,7 @@ export default function AdminDashboard() {
             </button>
           </form>
           <p style={{ color: "rgba(232,223,200,0.25)", fontSize: "0.7rem", marginTop: "1.5rem" }}>
-            Demo password: <code style={{ color: "rgba(245,200,66,0.5)" }}>nexura2026</code>
+            Demo password: <code style={{ color: "rgba(245,200,66,0.5)" }}>nexaura2026</code>
           </p>
         </motion.div>
       </div>
@@ -181,7 +181,7 @@ export default function AdminDashboard() {
             <h1 className="font-cinzel text-wine-gradient" style={{ fontSize: "1.8rem", fontWeight: 900, marginTop: "0.25rem" }}>
               ⚓ Admin Dashboard
             </h1>
-            <p style={{ color: "rgba(232,223,200,0.4)", fontSize: "0.85rem" }}>Nexura'26 Registration Management</p>
+            <p style={{ color: "rgba(232,223,200,0.4)", fontSize: "0.85rem" }}>Nexaura'26 Registration Management</p>
           </div>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             <button onClick={fetchData} className="btn-outline" style={{ padding: "0.6rem 1.25rem", borderRadius: "8px", fontSize: "0.8rem" }}>

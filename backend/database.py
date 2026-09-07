@@ -1,7 +1,11 @@
 import sqlite3
 import os
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "nexura.db")
+db_path_env = os.environ.get("DB_PATH")
+if db_path_env:
+    DB_PATH = db_path_env
+else:
+    DB_PATH = os.path.join(os.path.dirname(__file__), "nexura.db")
 
 def get_db():
     conn = sqlite3.connect(DB_PATH)

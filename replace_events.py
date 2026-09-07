@@ -1,4 +1,6 @@
-export const EVENTS = {
+import re
+
+new_events_str = """export const EVENTS = {
   technical: [
     {
       id: "tech-01",
@@ -6,7 +8,7 @@ export const EVENTS = {
       icon: "🐛",
       category: "technical",
       tagline: "Debugging Challenge",
-      description: "A two-member technical challenge conducted in two rounds. Participants will identify, analyze, and fix programming errors within the specified time limit. The event evaluates debugging skills, logical thinking, accuracy, and problem-solving ability.\n\nRounds:\nRound 1 – Basic Debugging: One member from each team will participate in the basic debugging challenge.\nRound 2 – Advanced Debugging: Shortlisted teams from Round 1 will advance to the advanced challenge, in which the second team member will participate.",
+      description: "A two-member technical challenge conducted in two rounds. Participants will identify, analyze, and fix programming errors within the specified time limit. The event evaluates debugging skills, logical thinking, accuracy, and problem-solving ability.\\n\\nRounds:\\nRound 1 – Basic Debugging: One member from each team will participate in the basic debugging challenge.\\nRound 2 – Advanced Debugging: Shortlisted teams from Round 1 will advance to the advanced challenge, in which the second team member will participate.",
       rules: [
         "Each team must have exactly 2 members.",
         "Teams may choose which member participates in each round.",
@@ -20,8 +22,8 @@ export const EVENTS = {
       ],
       teamSize: "2",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     },
     {
       id: "tech-02",
@@ -29,7 +31,7 @@ export const EVENTS = {
       icon: "✨",
       category: "technical",
       tagline: "Prompt Engineering Challenge",
-      description: "A creative prompt-engineering event designed to test participants’ ability to communicate effectively with AI. Participants will create precise, relevant, and creative prompts for image generation and real-world problem solving. The event evaluates prompt quality, creativity, relevance, and effective use of the given requirements.\n\nRounds:\nRound 1 – Pixel Pop: Participants will receive specific features and characteristics of a cartoon character and must create an effective prompt to generate an image matching the description.\nRound 2 – Mind Matrix: Participants will be given a real-world problem or scenario and must design a prompt that guides AI toward a creative, relevant, and practical solution.\nRound 3 – Aura Architect: Participants will receive a list of objects or elements and must use all of them to create a unique and creative image through prompt engineering.",
+      description: "A creative prompt-engineering event designed to test participants’ ability to communicate effectively with AI. Participants will create precise, relevant, and creative prompts for image generation and real-world problem solving. The event evaluates prompt quality, creativity, relevance, and effective use of the given requirements.\\n\\nRounds:\\nRound 1 – Pixel Pop: Participants will receive specific features and characteristics of a cartoon character and must create an effective prompt to generate an image matching the description.\\nRound 2 – Mind Matrix: Participants will be given a real-world problem or scenario and must design a prompt that guides AI toward a creative, relevant, and practical solution.\\nRound 3 – Aura Architect: Participants will receive a list of objects or elements and must use all of them to create a unique and creative image through prompt engineering.",
       rules: [
         "Each team must have 2–3 members.",
         "Participants must follow the instructions provided for each round.",
@@ -43,8 +45,8 @@ export const EVENTS = {
       ],
       teamSize: "2–3",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     },
     {
       id: "tech-03",
@@ -52,7 +54,7 @@ export const EVENTS = {
       icon: "🧠",
       category: "technical",
       tagline: "Technical Quiz",
-      description: "A two-round technical quiz designed to test knowledge, logical thinking, problem-solving ability, and speed. Questions cover Programming, Artificial Intelligence, Data Science, Cybersecurity, Web Technology, Computer Fundamentals, and General Technology.\n\nRounds:\nRound 1 – Tech Trivia: All registered teams will participate in a technical MCQ quiz. Based on their scores, the top-performing teams will be shortlisted for the final round.\nRound 2 – Tech Showdown: Shortlisted teams will compete through rapid-fire questions, technical puzzles, code snippets, and buzzer questions.",
+      description: "A two-round technical quiz designed to test knowledge, logical thinking, problem-solving ability, and speed. Questions cover Programming, Artificial Intelligence, Data Science, Cybersecurity, Web Technology, Computer Fundamentals, and General Technology.\\n\\nRounds:\\nRound 1 – Tech Trivia: All registered teams will participate in a technical MCQ quiz. Based on their scores, the top-performing teams will be shortlisted for the final round.\\nRound 2 – Tech Showdown: Shortlisted teams will compete through rapid-fire questions, technical puzzles, code snippets, and buzzer questions.",
       rules: [
         "Each team must have 2 participants.",
         "Round 1 will be conducted for all registered teams.",
@@ -68,8 +70,8 @@ export const EVENTS = {
       ],
       teamSize: "2",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     },
     {
       id: "tech-04",
@@ -91,8 +93,8 @@ export const EVENTS = {
       ],
       teamSize: "Team",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     },
     {
       id: "tech-05",
@@ -113,8 +115,8 @@ export const EVENTS = {
       ],
       teamSize: "1–2",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     }
   ],
   nontechnical: [
@@ -139,8 +141,8 @@ export const EVENTS = {
       ],
       teamSize: "2–3",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     },
     {
       id: "non-02",
@@ -148,7 +150,7 @@ export const EVENTS = {
       icon: "🎨",
       category: "nontechnical",
       tagline: "Draw & Guess",
-      description: "A creative team event combining drawing, visual observation, picture-based puzzles, and entertainment. Participants must communicate and interpret visual clues to identify words, tasks, movies, or songs within the specified time.\n\nRounds:\nRound 1 – Draw & Guess: One team member will draw the given word, while the other member must identify the correct word within the specified time.\nRound 2 – Picture Puzzle: A set of pictures will be displayed for a limited time. Teams must observe them carefully and complete the given task within the specified time.\nRound 3 – Connect & Identify: Teams must connect the given pictures and clues to identify the movie or song.",
+      description: "A creative team event combining drawing, visual observation, picture-based puzzles, and entertainment. Participants must communicate and interpret visual clues to identify words, tasks, movies, or songs within the specified time.\\n\\nRounds:\\nRound 1 – Draw & Guess: One team member will draw the given word, while the other member must identify the correct word within the specified time.\\nRound 2 – Picture Puzzle: A set of pictures will be displayed for a limited time. Teams must observe them carefully and complete the given task within the specified time.\\nRound 3 – Connect & Identify: Teams must connect the given pictures and clues to identify the movie or song.",
       rules: [
         "Each team must have 2–3 members.",
         "Mobile phones, internet access, and unauthorized external assistance are strictly prohibited during the rounds.",
@@ -163,8 +165,8 @@ export const EVENTS = {
       ],
       teamSize: "2–3",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     },
     {
       id: "non-03",
@@ -172,7 +174,7 @@ export const EVENTS = {
       icon: "📢",
       category: "nontechnical",
       tagline: "Creative Sales & Ads",
-      description: "A creative communication event that challenges participants to sell and advertise products using persuasion, originality, presentation skills, and teamwork. Participants must develop engaging sales pitches and advertisements within the given preparation and performance time.\n\nRounds:\nRound 1 – Sell It: A product will be assigned to each team. Teams must present a creative sales pitch using effective communication and convincing techniques.\nRound 2 – Advertise It: A new product will be assigned to each team. Teams must create and present a creative advertisement with a catchy tagline and an innovative concept.",
+      description: "A creative communication event that challenges participants to sell and advertise products using persuasion, originality, presentation skills, and teamwork. Participants must develop engaging sales pitches and advertisements within the given preparation and performance time.\\n\\nRounds:\\nRound 1 – Sell It: A product will be assigned to each team. Teams must present a creative sales pitch using effective communication and convincing techniques.\\nRound 2 – Advertise It: A new product will be assigned to each team. Teams must create and present a creative advertisement with a catchy tagline and an innovative concept.",
       rules: [
         "Each team must have 2–3 members.",
         "The product assigned by the organizers cannot be changed or replaced.",
@@ -186,8 +188,8 @@ export const EVENTS = {
       ],
       teamSize: "2–3",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     },
     {
       id: "non-04",
@@ -195,7 +197,7 @@ export const EVENTS = {
       icon: "🕵️",
       category: "nontechnical",
       tagline: "Case Study Challenge",
-      description: "A case-analysis event that tests observation, analytical thinking, teamwork, deduction, and reasoning. Participants will analyze a case study and then investigate a mystery using evidence provided by the organizers.\n\nRounds:\nRound 1 – Case Analysis: A case-study presentation will be shown to all participants. They must carefully analyze it and answer the related MCQs within 15–20 minutes. Selection will be based on marks scored; in case of a tie, earlier submission will be considered. Top participants will qualify for Round 2.\nRound 2 – Detective Mystery: Three teams will participate. Each team will receive a different evidence file related to the same crime. Teams must analyze their evidence, compare information where permitted, identify the team connected to the criminal, and submit their final answer with the best possible reasoning within the given time.",
+      description: "A case-analysis event that tests observation, analytical thinking, teamwork, deduction, and reasoning. Participants will analyze a case study and then investigate a mystery using evidence provided by the organizers.\\n\\nRounds:\\nRound 1 – Case Analysis: A case-study presentation will be shown to all participants. They must carefully analyze it and answer the related MCQs within 15–20 minutes. Selection will be based on marks scored; in case of a tie, earlier submission will be considered. Top participants will qualify for Round 2.\\nRound 2 – Detective Mystery: Three teams will participate. Each team will receive a different evidence file related to the same crime. Teams must analyze their evidence, compare information where permitted, identify the team connected to the criminal, and submit their final answer with the best possible reasoning within the given time.",
       rules: [
         "Participants must carefully read and analyze all clues and evidence provided.",
         "Participants must work only with their teammates and may share ideas within their team.",
@@ -208,8 +210,8 @@ export const EVENTS = {
       ],
       teamSize: "Team",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     },
     {
       id: "non-05",
@@ -217,7 +219,7 @@ export const EVENTS = {
       icon: "♟️",
       category: "nontechnical",
       tagline: "E-Sports: Chess & Carrom",
-      description: "An online 1v1 e-sports event featuring Chess and Carrom. The event tests strategy, concentration, precision, decision-making, and competitive skill. Both games will be conducted in a knockout format.\n\nRounds:\nChess – Chess.com: A strategic 1v1 online game. Each player will have 10 minutes. Standard Chess.com rules will apply.\nCarrom – Carrom Pool: Disc Game: An online 1v1 game conducted using the private-match feature. Standard Carrom Pool rules and scoring will apply.",
+      description: "An online 1v1 e-sports event featuring Chess and Carrom. The event tests strategy, concentration, precision, decision-making, and competitive skill. Both games will be conducted in a knockout format.\\n\\nRounds:\\nChess – Chess.com: A strategic 1v1 online game. Each player will have 10 minutes. Standard Chess.com rules will apply.\\nCarrom – Carrom Pool: Disc Game: An online 1v1 game conducted using the private-match feature. Standard Carrom Pool rules and scoring will apply.",
       rules: [
         "Chess matches will be 1v1, with 10 minutes per player.",
         "Standard Chess.com chess rules will apply.",
@@ -234,100 +236,23 @@ export const EVENTS = {
       ],
       teamSize: "1",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd floor MB"
+      time: "TBA",
+      venue: "TBA"
     }
   ],
   workshops: []
 };
+"""
 
-export const TEAM_MEMBERS = [
-  {
-    id: 1,
-    name: "Keerthik Nemalan M",
-    role: "Captain",
-    position: "President",
-    dept: "Artificial Intelligence and Data Science",
-    year: "3rd Year",
-    bio: "Mastermind behind Nexura'26. Oversees overall symposium execution, sponsorship acquisition, and inter-college relations. Passionate about software architecture & community building.",
-    skills: ["Event Architecture", "Leadership", "Full-Stack Dev"],
-    email: "keerthiknemalanm14@gmail.com",
-    phone: "8438444829",
-    avatar: "/captain.jpg",
-    social: { instagram: "https://instagram.com", linkedin: "https://linkedin.com", github: "https://github.com" },
-  },
-  {
-    id: 2,
-    name: "JONAH IGNATIUS B",
-    role: "Navigator",
-    position: "Vice president",
-    dept: "Artificial Intelligence and Data Science",
-    year: "4th Year",
-    bio: "Charts the technical waters for Nexura'26. Coordinates all coding, debugging, and AI events while managing the evaluation infrastructure.",
-    skills: ["Competitive Programming", "System Design", "AI / ML"],
-    email: "jonahignatius17@gmail.com",
-    phone: "+91 99400 28606",
-    avatar: "/Vice1.png",
-    social: { instagram: "https://instagram.com", linkedin: "https://linkedin.com", github: "https://github.com" },
-  },
-  {
-    id: 3,
-    name: "SIVAKUMAR",
-    role: "Quartermaster",
-    position: "Vice president",
-    dept: "Artificial Intelligence and Data Science",
-    year: "3rd Year",
-    bio: "Keeps the ship running smoothly. Responsible for venue bookings, audio-visual equipment setup, catering, and volunteer management.",
-    skills: ["Operations", "Resource Management", "Coordination"],
-    email: "siva0kumar1095@gmail.com",
-    phone: "+91 97914 14317",
-    avatar: "/Vice2.png",
-    social: { instagram: "https://instagram.com", linkedin: "https://linkedin.com", github: "https://github.com" },
-  },
-  {
-    id: 4,
-    name: "Saran",
-    role: "Lookout",
-    position: "Secretary",
-    dept: "Artificial Intelligence and Data Science",
-    year: "3rd Year",
-    bio: "Visual storyteller responsible for the pirate dark aesthetic of Nexura'26. Created motion graphics, posters, badges, and UI design tokens.",
-    skills: ["UI/UX Design", "Figma", "Branding & Motion"],
-    email: "saran30905@gmail.com",
-    phone: "9843308325",
-    avatar: "/Sec1.png",
-    social: { instagram: "https://instagram.com", linkedin: "https://linkedin.com", github: "https://github.com" },
-  },
-  {
-    id: 5,
-    name: "Sriram",
-    role: "Boatswain",
-    position: "Vice secretary",
-    dept: "Artificial Intelligence and Data Science",
-    year: "4th Year",
-    bio: "Spearheads outreach across 50+ colleges in South India. Manages social media campaigns, campus ambassador program, and media coverage.",
-    skills: ["Digital Marketing", "Public Speaking", "Outreach"],
-    email: "sriramrakesh594@gmail.com",
-    phone: "7200321251",
-    avatar: "/Sec2.png",
-    social: { instagram: "https://instagram.com", linkedin: "https://linkedin.com", github: "https://github.com" },
-  },
-  {
-    id: 6,
-    name: "Rubini",
-    role: "First Mate",
-    position: "Vice secretary",
-    dept: "Artificial Intelligence and Data Science",
-    year: "3rd Year",
-    bio: "Curates high-energy non-technical events & talent showcases. Ensures participants have an unforgettable experience with fair judging.",
-    skills: ["Event Curation", "Stage Management", "Public Relations"],
-    email: "rubini1433@gmail.com",
-    phone: "9344256885",
-    avatar: "/Sec3.png",
-    social: { instagram: "https://instagram.com", linkedin: "https://linkedin.com", github: "https://github.com" },
-  },
-];
+with open("frontend/src/data/data.js", "r", encoding="utf-8") as f:
+    text = f.read()
 
-export const SYMPOSIUM_DATE = new Date("2026-09-30T10:30:00");
-export const COLLEGE_NAME = "NEW PRINCE SHRI BHAVANI COLLEGE OF ENGINEERING AND TECHNOLOGY";
-export const COLLEGE_LOCATION = "Chennai, Tamil Nadu";
+# Replace EVERYTHING before `export const TEAM_MEMBERS`
+parts = text.split("export const TEAM_MEMBERS")
+if len(parts) > 1:
+    new_text = new_events_str + "\nexport const TEAM_MEMBERS" + parts[1]
+    with open("frontend/src/data/data.js", "w", encoding="utf-8") as f:
+        f.write(new_text)
+    print("Done")
+else:
+    print("Could not find TEAM_MEMBERS")

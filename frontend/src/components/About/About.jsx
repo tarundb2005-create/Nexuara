@@ -269,42 +269,7 @@ function CrewModal({ member, onClose }) {
                 📞 {member.phone}
               </a>
             )}
-            {member.social?.instagram && (
-              <a
-                href={member.social.instagram}
-                target="_blank" rel="noreferrer"
-                style={{
-                  background: "rgba(236,72,153,0.12)",
-                  border: "1px solid rgba(236,72,153,0.3)",
-                  borderRadius: "8px",
-                  padding: "0.45rem 0.9rem",
-                  fontSize: "0.8rem",
-                  color: "#f472b6",
-                  textDecoration: "none",
-                  display: "flex", alignItems: "center", gap: "0.4rem",
-                }}
-              >
-                📸 Instagram
-              </a>
-            )}
-            {member.social?.linkedin && (
-              <a
-                href={member.social.linkedin}
-                target="_blank" rel="noreferrer"
-                style={{
-                  background: "rgba(30,111,217,0.15)",
-                  border: "1px solid rgba(30,111,217,0.35)",
-                  borderRadius: "8px",
-                  padding: "0.45rem 0.9rem",
-                  fontSize: "0.8rem",
-                  color: "#60a5fa",
-                  textDecoration: "none",
-                  display: "flex", alignItems: "center", gap: "0.4rem",
-                }}
-              >
-                💼 LinkedIn
-              </a>
-            )}
+
           </div>
         </div>
       </motion.div>
@@ -501,10 +466,10 @@ export default function About() {
             ─── ☠ ───
           </div>
           <h2 className="font-cinzel text-gold-gradient" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 900, marginBottom: "0.75rem" }}>
-            The Nexura Crew
+            The Nexaura Crew
           </h2>
           <p style={{ color: "rgba(232,223,200,0.5)", maxWidth: "500px", margin: "0 auto", lineHeight: 1.7, fontSize: "0.95rem" }}>
-            Meet the pirates behind Nexura'26. Tap any crew member to view their photo, full profile, and contact details.
+            Meet the pirates behind Nexaura'26. Tap any crew member to view their photo, full profile, and contact details.
           </p>
           <div style={{ fontSize: "1.5rem", letterSpacing: "0.3em", color: "rgba(192,16,42,0.3)", marginTop: "0.75rem" }}>
             ─── ⚓ ───
@@ -541,7 +506,7 @@ export default function About() {
           }}
         />
 
-        {/* Nexura Signature */}
+        {/* Nexaura Signature */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -549,7 +514,7 @@ export default function About() {
           style={{ textAlign: "center", marginTop: "2rem" }}
         >
           <div className="font-pirata" style={{ fontSize: "1.8rem", color: "rgba(192,16,42,0.5)" }}>
-            ─── NEXURA'26 ───
+            ─── NEXAURA'26 ───
           </div>
         </motion.div>
       </div>

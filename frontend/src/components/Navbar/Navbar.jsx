@@ -48,9 +48,9 @@ export default function Navbar() {
           to="/"
           style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.6rem", textDecoration: "none" }}
         >
-          <img src={nexuraLogo} alt="Nexura" style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1.5px solid rgba(192,16,42,0.5)", objectFit: "cover" }} />
+          <img src={nexuraLogo} alt="Nexaura" style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1.5px solid rgba(192,16,42,0.5)", objectFit: "cover" }} />
           <span className="font-pirata" style={{ fontSize: "1.2rem", fontWeight: 900, letterSpacing: "0.1em", background: "linear-gradient(135deg, #e8c84a, #d4a82a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            NEX<span style={{ background: "linear-gradient(135deg, #ff3a52, #c0102a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>U</span>RA<span style={{ color: "rgba(192,16,42,0.6)", WebkitTextFillColor: "rgba(192,16,42,0.6)" }}>'26</span>
+            NEX<span style={{ background: "linear-gradient(135deg, #ff3a52, #c0102a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>A</span>URA<span style={{ color: "rgba(192,16,42,0.6)", WebkitTextFillColor: "rgba(192,16,42,0.6)" }}>'26</span>
           </span>
         </Link>
 

@@ -24,12 +24,12 @@ export default function Footer() {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
               <span style={{ fontSize: "1.25rem" }}>⚓</span>
-              <span className="font-pirata" style={{ fontSize: "1.5rem", fontWeight: 900, background: "linear-gradient(135deg, #e8c87a, #d4a82a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>NEXURA'26</span>
+              <span className="font-pirata" style={{ fontSize: "1.5rem", fontWeight: 900, background: "linear-gradient(135deg, #e8c87a, #d4a82a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>NEXAURA'26</span>
             </div>
             <p style={{ fontSize: "0.85rem", color: "rgba(232,223,200,0.45)", lineHeight: 1.7 }}>
               {COLLEGE_NAME}<br />
               {COLLEGE_LOCATION}<br />
-              14–16 February 2026
+              30th September 2026
             </p>
           </div>
 
@@ -68,7 +68,7 @@ export default function Footer() {
             <h4 className="font-cinzel" style={{ fontSize: "0.75rem", letterSpacing: "0.2em", color: "rgba(192,16,42,0.6)", textTransform: "uppercase", marginBottom: "1rem" }}>
               Events
             </h4>
-            {["Technical Events", "Non-Technical", "Workshops", "Cultural Night"].map(e => (
+            {["Technical Events", "Non-Technical", "Cultural Night"].map(e => (
               <div key={e} style={{ color: "rgba(232,223,200,0.45)", fontSize: "0.875rem", padding: "0.3rem 0" }}>{e}</div>
             ))}
           </div>
@@ -79,8 +79,7 @@ export default function Footer() {
               Contact
             </h4>
             <div style={{ fontSize: "0.875rem", color: "rgba(232,223,200,0.45)", lineHeight: 2 }}>
-              <div>📧 nexura@yourcollege.edu</div>
-              <div>📱 +91 98765 43210</div>
+              <div>📱 +91 84384 44829</div>
               <div>📍 {COLLEGE_LOCATION}</div>
             </div>
           </div>
@@ -92,12 +91,12 @@ export default function Footer() {
         {/* Bottom row */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
           <p style={{ fontSize: "0.78rem", color: "rgba(232,223,200,0.3)" }}>
-            © 2026 Nexura'26 · {COLLEGE_NAME} · All rights reserved.
+            © 2026 Nexaura'26 · {COLLEGE_NAME} · All rights reserved.
           </p>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <span style={{ fontSize: "0.75rem", color: "rgba(232,223,200,0.3)" }}>Made with</span>
             <span>⚓</span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(232,223,200,0.3)" }}>by the Nexura Tech Crew</span>
+            <span style={{ fontSize: "0.75rem", color: "rgba(232,223,200,0.3)" }}>by the Nexaura Tech Crew</span>
           </div>
         </div>
       </div>

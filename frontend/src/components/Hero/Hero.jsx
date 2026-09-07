@@ -130,7 +130,7 @@ export default function Hero() {
             border: "2px solid rgba(192,16,42,0.5)",
             boxShadow: "0 0 30px rgba(192,16,42,0.4), 0 0 60px rgba(192,16,42,0.15)",
           }}>
-            <img src={nexuraLogo} alt="Nexura" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={nexuraLogo} alt="Nexaura" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "0.75rem",
@@ -154,7 +154,7 @@ export default function Hero() {
             fontWeight: 900,
             lineHeight: 0.95,
           }}>
-            {"NEXURA".split("").map((l, i) => (
+            {"NEXAURA".split("").map((l, i) => (
               <span key={i} style={{
                 background: l === "X"
                   ? "linear-gradient(180deg, #ff4d62, #c0102a)"
@@ -204,10 +204,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.7 }}
           style={{
-            display: "inline-flex", alignItems: "center", gap: "0.5rem",
+            display: "inline-flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap", justifyContent: "center",
             background: "rgba(8,0,15,0.7)",
             border: "1px solid rgba(192,16,42,0.2)",
-            borderRadius: "16px", padding: "1.5rem 2.5rem", marginBottom: "3rem",
+            borderRadius: "16px", padding: "1.5rem 5%", marginBottom: "3rem",
             backdropFilter: "blur(12px)",
             boxShadow: "0 0 40px rgba(192,16,42,0.1)",
           }}
@@ -244,10 +244,9 @@ export default function Hero() {
           style={{ display: "flex", justifyContent: "center", gap: "3rem", marginTop: "4rem", flexWrap: "wrap" }}
         >
           {[
-            { value: "12+", label: "Events", color: "#c0102a" },
-            { value: "3",   label: "Workshops", color: "#1e6fd9" },
-            { value: "₹30K", label: "Prize Pool", color: "#c0102a" },
-            { value: "500+", label: "Participants", color: "#1e6fd9" },
+            { value: "10", label: "Events", color: "#c0102a" },
+            { value: "2",   label: "Categories", color: "#1e6fd9" },
+            { value: "500+", label: "Participants", color: "#c0102a" },
           ].map(({ value, label, color }) => (
             <div key={label} style={{ textAlign: "center" }}>
               <div className="font-cinzel" style={{
