@@ -6,7 +6,6 @@ import nexuraLogo from "../../assets/nexura-logo.jpg";
 const NAV_LINKS = [
   { label: "Home",       href: "/" },
   { label: "Events",     href: "/events" },
-  { label: "Register",   href: "/register" },
   { label: "About",      href: "/about" },
 ];
 

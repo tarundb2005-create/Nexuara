@@ -176,20 +176,31 @@ function EventCard({ event, index, onClick }) {
         paddingTop: "0.75rem",
         borderTop: "1px solid rgba(192,16,42,0.12)",
       }}>
-        <span style={{ fontSize: "0.75rem", color: "rgba(240,232,232,0.4)" }}>📅 {event.date}</span>
-        <span style={{ color: "rgba(192,16,42,0.7)", fontSize: "0.8rem" }}>View Details →</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <span style={{ fontSize: "0.75rem", color: "rgba(240,232,232,0.4)" }}>📅 {event.date}</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+          <button 
+            className="btn-wine"
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open("https://docs.google.com/forms/d/e/1FAIpQLScnIJMgoekJ2GlS_8x_yAkvhTgTotsI_ryZVIywAq8EPm7eVw/viewform?usp=publish-editor", "_blank");
+            }}
+            style={{ padding: "0.4rem 0.8rem", borderRadius: "6px", fontSize: "0.75rem", cursor: "pointer", border: "none" }}
+          >
+            Register
+          </button>
+          <span style={{ color: "rgba(192,16,42,0.7)", fontSize: "0.8rem" }}>View Details →</span>
+        </div>
       </div>
     </motion.div>
   );
 }
 
-import { useNavigate } from "react-router-dom";
-
 /* ── Events Section ──────────────────────────────────────────── */
 export default function Events() {
   const [activeTab, setActiveTab] = useState("technical");
   const [selected,  setSelected]  = useState(null);
-  const navigate = useNavigate();
 
   const events = EVENTS[activeTab] || [];
 
@@ -276,7 +287,7 @@ export default function Events() {
             onClose={() => setSelected(null)}
             onRegister={(evt) => { 
               setSelected(null); 
-              navigate("/register", { state: { preselectedEvent: evt } });
+              window.open("https://docs.google.com/forms/d/e/1FAIpQLScnIJMgoekJ2GlS_8x_yAkvhTgTotsI_ryZVIywAq8EPm7eVw/viewform?usp=publish-editor", "_blank");
             }}
           />
         )}

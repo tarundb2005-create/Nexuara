@@ -231,7 +231,7 @@ export default function Hero() {
           <button onClick={() => navigate("/events")} className="btn-wine" style={{ padding: "0.9rem 2.5rem", borderRadius: "8px", fontSize: "0.85rem" }}>
             🗺️ &nbsp; Explore Events
           </button>
-          <button onClick={() => navigate("/register")} className="btn-blue" style={{ padding: "0.9rem 2.5rem", borderRadius: "8px", fontSize: "0.85rem" }}>
+          <button onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScnIJMgoekJ2GlS_8x_yAkvhTgTotsI_ryZVIywAq8EPm7eVw/viewform?usp=publish-editor", "_blank")} className="btn-blue" style={{ padding: "0.9rem 2.5rem", borderRadius: "8px", fontSize: "0.85rem" }}>
             ⚓ &nbsp; Register Now
           </button>
         </motion.div>

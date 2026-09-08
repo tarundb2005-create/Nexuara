@@ -6,7 +6,6 @@ import PirateLoader   from "./components/Loader/PirateLoader";
 import Navbar         from "./components/Navbar/Navbar";
 import Hero           from "./components/Hero/Hero";
 import Events         from "./components/Events/Events";
-import Registration   from "./components/Registration/Registration";
 import About          from "./components/About/About";
 import Footer         from "./components/Footer/Footer";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -69,7 +68,6 @@ export default function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Hero />} />
               <Route path="events" element={<Events />} />
-              <Route path="register" element={<Registration />} />
               <Route path="about" element={<About />} />
             </Route>
             <Route path="/admin" element={<AdminDashboard />} />
