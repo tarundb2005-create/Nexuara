@@ -8,7 +8,6 @@ import Hero           from "./components/Hero/Hero";
 import Events         from "./components/Events/Events";
 import About          from "./components/About/About";
 import Footer         from "./components/Footer/Footer";
-import AdminDashboard from "./pages/AdminDashboard";
 
 import MagicRings from "./components/MagicRings/MagicRings";
 
@@ -70,7 +69,6 @@ export default function App() {
               <Route path="events" element={<Events />} />
               <Route path="about" element={<About />} />
             </Route>
-            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </BrowserRouter>
       )}

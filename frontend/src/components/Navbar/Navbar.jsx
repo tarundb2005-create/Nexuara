@@ -78,26 +78,6 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <Link
-            to="/admin"
-            style={{
-              background: "rgba(30,111,217,0.1)",
-              border: "1px solid rgba(30,111,217,0.3)",
-              borderRadius: "6px",
-              padding: "0.45rem 1rem",
-              fontFamily: "Cinzel, serif",
-              fontSize: "0.75rem",
-              letterSpacing: "0.1em",
-              color: "rgba(100,170,255,0.9)",
-              textDecoration: "none",
-              marginLeft: "0.75rem",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={e => { e.target.style.background = "rgba(30,111,217,0.2)"; }}
-            onMouseLeave={e => { e.target.style.background = "rgba(30,111,217,0.1)"; }}
-          >
-            Admin
-          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -155,7 +135,6 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <Link to="/admin" onClick={() => setMenuOpen(false)} style={{ color: "rgba(100,170,255,0.8)", textDecoration: "none", fontFamily: "Cinzel, serif", fontSize: "0.85rem", padding: "0.75rem 0" }}>Admin</Link>
         </motion.div>
       )}
 
