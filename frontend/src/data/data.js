@@ -12,8 +12,6 @@ export const EVENTS = {
         "Teams may choose which member participates in each round.",
         "Only teams shortlisted in Round 1 will proceed to Round 2.",
         "All challenges must be completed within the specified time limit.",
-        "Participants must bring their own laptop.",
-        "Participants must arrange their own internet/network connection, if required.",
         "Use of unauthorized resources, external assistance, or any unfair practice is strictly prohibited.",
         "Any form of malpractice will result in immediate disqualification.",
         "The judges' decision will be final."
