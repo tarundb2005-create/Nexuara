@@ -107,7 +107,9 @@ export const EVENTS = {
       description: "An academic presentation event where participants present research ideas, technical concepts, or innovative solutions on a selected topic. The event evaluates subject knowledge, research quality, originality, creativity, communication, presentation skills, and Q&A performance.",
       rules: [
         "Each participant/team will be given 5–7 minutes for the presentation.",
-        "Participants must submit their paper or abstract before the specified deadline.",
+        "The submitted paper must be 4–6 pages only.",
+        "Each team must prepare 7–10 slides for the presentation.",
+        "The paper and presentation must be submitted on or before 25.09.2026.",
         "The presentation topic must be relevant to the given theme or an approved topic.",
         "All submitted and presented content must be original and properly referenced.",
         "Plagiarism or copied content will result in immediate disqualification.",
