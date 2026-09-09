@@ -102,7 +102,8 @@ export const EVENTS = {
       icon: "📄",
       category: "technical",
       tagline: "Paper Presentation",
-      description: "An academic presentation event where participants present research ideas, technical concepts, or innovative solutions on a selected topic. The event evaluates subject knowledge, research quality, originality, creativity, communication, presentation skills, and Q&A performance.\n\nSend your paper to this mail: aids.events@npsbcet.edu.in",
+      description: "An academic presentation event where participants present research ideas, technical concepts, or innovative solutions on a selected topic. The event evaluates subject knowledge, research quality, originality, creativity, communication, presentation skills, and Q&A performance.",
+      submissionEmail: "aids.events@npsbcet.edu.in",
       rules: [
         "Each participant/team will be given 5–7 minutes for the presentation.",
         "The submitted paper must be 4–6 pages only.",

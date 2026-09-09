@@ -63,9 +63,16 @@ function EventModal({ event, onClose, onRegister }) {
           <div style={{ height: "1px", background: "linear-gradient(90deg, rgba(192,16,42,0.4), transparent)", marginBottom: "1.5rem" }} />
 
           {/* Description */}
-          <p style={{ color: "rgba(232,223,200,0.8)", lineHeight: 1.7, marginBottom: "1.5rem", fontSize: "0.95rem" }}>
-            {event.description}
-          </p>
+          <div style={{ marginBottom: "1.5rem" }}>
+            <p style={{ color: "rgba(232,223,200,0.8)", lineHeight: 1.7, fontSize: "0.95rem" }}>
+              {event.description}
+            </p>
+            {event.submissionEmail && (
+              <p style={{ marginTop: "1rem", fontSize: "0.95rem", color: "rgba(232,223,200,0.9)", background: "rgba(192,16,42,0.1)", padding: "0.8rem", borderRadius: "8px", border: "1px solid rgba(192,16,42,0.3)" }}>
+                Send your paper to this mail: <strong style={{ color: "#fff", letterSpacing: "0.05em" }}>{event.submissionEmail}</strong>
+              </p>
+            )}
+          </div>
 
           {/* Info grid */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
