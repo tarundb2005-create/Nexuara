@@ -277,136 +277,139 @@ function CrewModal({ member, onClose }) {
   );
 }
 
-/* ── Crew Card ───────────────────────────────────────────────── */
+/* ── Crew Card (Wanted Poster Theme) ──────────────────────────────── */
 function CrewCard({ member, index, onClick }) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40, rotateY: -15 }}
-      whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+      initial={{ opacity: 0, y: 40, rotateY: -15, rotateZ: index % 2 === 0 ? -3 : 3 }}
+      whileInView={{ opacity: 1, y: 0, rotateY: 0, rotateZ: index % 2 === 0 ? -2 : 2 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.12, duration: 0.6, ease: [0.22, 0.9, 0.36, 1] }}
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="crew-card"
+      className="crew-card wanted-poster"
       style={{
         position: "relative",
-        background: "rgba(255,255,255,0.03)",
-        border: `1px solid ${hovered ? "rgba(192,16,42,0.45)" : "rgba(192,16,42,0.14)"}`,
-        borderRadius: "16px",
-        padding: "2rem 1.5rem",
+        background: "linear-gradient(175deg, #e4d5b7 0%, #d8c29b 50%, #c8ad81 100%)",
+        border: "1px solid #8b5a2b",
+        boxShadow: hovered 
+          ? "0 25px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(101,67,33,0.6)" 
+          : "0 10px 30px rgba(0,0,0,0.3), inset 0 0 40px rgba(101,67,33,0.4)",
+        padding: "1.5rem 1rem",
         textAlign: "center",
-        overflow: "hidden",
-        transition: "all 0.4s ease",
-        transform: hovered ? "translateY(-8px)" : "translateY(0)",
-        boxShadow: hovered ? "0 20px 60px rgba(192,16,42,0.2)" : "none",
+        width: "250px", // Fixed width looks better for posters
+        transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+        transform: hovered ? "scale(1.05) rotateZ(0deg) translateY(-10px)" : "scale(1)",
         cursor: "pointer",
+        clipPath: "polygon(1% 1%, 99% 0%, 98% 99%, 2% 100%, 0% 98%)", // Slightly imperfect edges
       }}
     >
-      {/* Map-pin decorative top-left */}
+      {/* Nail / Pin */}
       <div style={{
-        position: "absolute", top: "1rem", left: "1rem",
-        fontSize: "0.8rem", opacity: 0.4,
-      }}>📍</div>
-
-      {/* Parchment texture overlay */}
-      <div style={{
-        position: "absolute", inset: 0, borderRadius: "16px",
-        background: "radial-gradient(ellipse at 30% 20%, rgba(192,16,42,0.08) 0%, transparent 60%)",
-        pointerEvents: "none",
+        position: "absolute", top: "12px", left: "50%", transform: "translateX(-50%)",
+        width: "14px", height: "14px", borderRadius: "50%",
+        background: "radial-gradient(circle at 30% 30%, #b0bec5, #37474f)",
+        boxShadow: "2px 2px 5px rgba(0,0,0,0.6)",
+        zIndex: 10
       }} />
 
-      {/* Role banner */}
-      <motion.div
-        animate={{ opacity: hovered ? 1 : 0.7, y: hovered ? 0 : 2 }}
-        style={{
-          display: "inline-block",
-          background: "linear-gradient(135deg, rgba(192,16,42,0.2), rgba(150,0,32,0.12))",
-          border: "1px solid rgba(192,16,42,0.4)",
-          borderRadius: "100px",
-          padding: "0.25rem 0.85rem",
-          fontFamily: "Pirata One, Cinzel, serif",
-          fontSize: "0.78rem",
-          color: "#f87171",
-          letterSpacing: "0.1em",
-          marginBottom: "1.25rem",
-        }}
-      >
-        ☠ {member.role}
-      </motion.div>
+      {/* Wanted Heading */}
+      <h2 className="font-pirata" style={{
+        fontSize: "2.8rem",
+        color: "#3e2723",
+        margin: "1rem 0 0.2rem 0",
+        letterSpacing: "0.12em",
+        textShadow: "1px 1px 0px rgba(255,255,255,0.4)",
+        lineHeight: 1
+      }}>
+        WANTED
+      </h2>
 
-      {/* Avatar */}
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: "1rem", position: "relative" }}>
-        <Avatar member={member} size={94} />
-        {/* Animated ring on hover */}
-        <motion.div
-          animate={{
-            scale: hovered ? [1, 1.18, 1] : 1,
-            opacity: hovered ? [0.5, 0.15, 0.5] : 0,
-          }}
-          transition={{ duration: 1.5, repeat: hovered ? Infinity : 0 }}
+      {/* Dead or Alive */}
+      <div style={{
+        fontFamily: "Cinzel, serif",
+        fontSize: "0.75rem",
+        fontWeight: 900,
+        letterSpacing: "0.2em",
+        color: "#5d4037",
+        marginBottom: "1rem",
+      }}>
+        DEAD OR ALIVE
+      </div>
+
+      {/* Portrait Frame */}
+      <div style={{
+        width: "170px",
+        height: "170px",
+        margin: "0 auto 1rem auto",
+        border: "4px solid #3e2723",
+        boxShadow: "inset 0 0 10px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.3)",
+        position: "relative",
+        background: "#fff",
+        overflow: "hidden"
+      }}>
+        <img 
+          src={member.avatar || "/default-avatar.png"} 
+          alt={member.name}
           style={{
-            position: "absolute",
-            width: 94, height: 94,
-            borderRadius: "50%",
-            border: "2px solid rgba(192,16,42,0.6)",
-            top: 0, left: "50%", transform: "translateX(-50%)",
+            width: "100%", height: "100%", objectFit: "cover",
+            filter: "sepia(0.85) contrast(1.2) brightness(0.9) grayscale(0.2)",
+            transition: "filter 0.4s",
           }}
+          onMouseEnter={(e) => e.target.style.filter = "none"}
+          onMouseLeave={(e) => e.target.style.filter = "sepia(0.85) contrast(1.2) brightness(0.9) grayscale(0.2)"}
         />
       </div>
 
-      {/* Name */}
-      <h3 className="font-cinzel" style={{
-        fontSize: "1.05rem",
+      {/* Role / Title */}
+      <div className="font-cinzel" style={{
+        fontSize: "0.9rem",
         fontWeight: 800,
-        color: hovered ? "#c0102a" : "#5c4033",
-        marginBottom: "0.25rem",
-        transition: "color 0.3s",
+        color: "#4e342e",
+        textTransform: "uppercase",
+        letterSpacing: "0.05em",
+        marginBottom: "0.2rem",
+      }}>
+        {member.role}
+      </div>
+
+      {/* Name */}
+      <h3 className="font-pirata" style={{
+        fontSize: "1.9rem",
+        color: "#212121",
+        margin: "0 0 0.5rem 0",
+        lineHeight: 1.1,
+        textShadow: "1px 1px 0px rgba(255,255,255,0.4)"
       }}>
         {member.name}
       </h3>
 
-      {/* Position */}
-      <div style={{
-        fontFamily: "Cinzel, serif",
-        fontSize: "0.74rem",
-        letterSpacing: "0.12em",
-        color: "rgba(192,16,42,0.85)",
-        textTransform: "uppercase",
-        marginBottom: "0.4rem",
-        fontWeight: 600,
+      {/* Bounty */}
+      <div className="font-cinzel" style={{
+        fontSize: "1.3rem",
+        fontWeight: 900,
+        color: "#8b0000",
+        marginTop: "0.8rem",
+        borderTop: "2px dashed #795548",
+        borderBottom: "2px dashed #795548",
+        padding: "0.4rem 0",
       }}>
-        {member.position}
+        $ {member.id * 15},000,000
       </div>
-
-      {/* Department */}
+      
+      {/* View Hint */}
       <div style={{
-        fontSize: "0.78rem",
-        color: "rgba(92, 64, 51, 0.7)",
-        marginBottom: "1rem",
-        fontWeight: 600,
+        fontSize: "0.7rem",
+        color: "#5d4037",
+        marginTop: "1rem",
+        fontStyle: "italic",
+        opacity: hovered ? 1 : 0.6,
+        transition: "opacity 0.3s"
       }}>
-        {member.dept}
-      </div>
-
-      {/* Click / Touch Hint Badge */}
-      <div style={{
-        marginTop: "0.5rem",
-        padding: "0.4rem 0.8rem",
-        borderRadius: "8px",
-        background: hovered ? "rgba(192,16,42,0.8)" : "rgba(92, 64, 51, 0.05)",
-        border: `1px solid ${hovered ? "rgba(192,16,42,0.4)" : "rgba(92, 64, 51, 0.2)"}`,
-        fontSize: "0.72rem",
-        color: hovered ? "#fff" : "rgba(92, 64, 51, 0.7)",
-        fontFamily: "Cinzel, serif",
-        transition: "all 0.3s",
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "0.3rem",
-      }}>
-        <span>🔍</span> {hovered ? "Click for Full Profile" : "View Profile"}
+        {hovered ? "Click to view dossier" : "Approach with caution"}
       </div>
     </motion.div>
   );
