@@ -64,9 +64,34 @@ function EventModal({ event, onClose, onRegister }) {
 
           {/* Description */}
           <div style={{ marginBottom: "1.5rem" }}>
-            <p style={{ color: "rgba(232,223,200,0.8)", lineHeight: 1.7, fontSize: "0.95rem" }}>
-              {event.description}
-            </p>
+            {event.description.split('\n').filter(p => p.trim() !== '').map((block, index) => {
+              if (block.trim().toLowerCase() === "rounds:") {
+                return <h4 key={index} className="font-cinzel" style={{ color: "rgba(192,16,42,0.9)", marginTop: "1rem", marginBottom: "0.5rem", fontSize: "1.1rem" }}>{block}</h4>;
+              }
+              
+              if (block.trim().startsWith("Round ") || block.trim().startsWith("Chess –") || block.trim().startsWith("Carrom –")) {
+                const parts = block.split('–');
+                if (parts.length > 1) {
+                  return (
+                    <div key={index} style={{ color: "rgba(232,223,200,0.8)", fontSize: "0.95rem", marginLeft: "1rem", marginBottom: "0.5rem", paddingLeft: "0.75rem", borderLeft: "2px solid rgba(192,16,42,0.5)" }}>
+                      <strong style={{ color: "#e8dfc8" }}>{parts[0].trim()}</strong> – {parts.slice(1).join('–').trim()}
+                    </div>
+                  );
+                }
+                return <div key={index} style={{ color: "rgba(232,223,200,0.8)", fontSize: "0.95rem", marginLeft: "1rem", marginBottom: "0.5rem" }}>{block}</div>;
+              }
+
+              const sentences = block.split('. ').filter(s => s.trim() !== '').map(s => s.trim() + (s.endsWith('.') ? '' : '.'));
+              return (
+                <ul key={index} style={{ color: "rgba(232,223,200,0.8)", fontSize: "0.95rem", paddingLeft: "1.2rem", marginBottom: "1rem", lineHeight: 1.6 }}>
+                  {sentences.map((sentence, sIdx) => (
+                    <li key={sIdx} style={{ marginBottom: "0.4rem" }}>
+                      {sentence}
+                    </li>
+                  ))}
+                </ul>
+              );
+            })}
             {event.submissionEmail && (
               <p style={{ marginTop: "1rem", fontSize: "0.95rem", color: "rgba(232,223,200,0.9)", background: "rgba(192,16,42,0.1)", padding: "0.8rem", borderRadius: "8px", border: "1px solid rgba(192,16,42,0.3)" }}>
                 Send your paper to this mail: <strong style={{ color: "#fff", letterSpacing: "0.05em" }}>{event.submissionEmail}</strong>
