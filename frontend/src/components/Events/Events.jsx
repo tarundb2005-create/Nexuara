@@ -74,6 +74,7 @@ function EventModal({ event, onClose, onRegister }) {
               { icon: "📅", label: "Date",      value: event.date },
               { icon: "🕐", label: "Time",      value: event.time },
               { icon: "📍", label: "Venue",     value: event.venue },
+              { icon: "⏳", label: "Deadline",  value: event.deadline },
             ].map(({ icon, label, value }) => (
               <div key={label} style={{
                 background: "rgba(255,255,255,0.04)",
@@ -176,8 +177,9 @@ function EventCard({ event, index, onClick }) {
         paddingTop: "0.75rem",
         borderTop: "1px solid rgba(192,16,42,0.12)",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
           <span style={{ fontSize: "0.75rem", color: "rgba(240,232,232,0.4)" }}>📅 {event.date}</span>
+          <span style={{ fontSize: "0.7rem", color: "rgba(192,16,42,0.7)" }}>⏳ Ends: {event.deadline}</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
           <button 

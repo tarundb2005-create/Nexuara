@@ -21,7 +21,8 @@ export const EVENTS = {
       teamSize: "2",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     },
     {
       id: "tech-02",
@@ -44,7 +45,8 @@ export const EVENTS = {
       teamSize: "2–3",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     },
     {
       id: "tech-03",
@@ -69,7 +71,8 @@ export const EVENTS = {
       teamSize: "2",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     },
     {
       id: "tech-04",
@@ -92,7 +95,8 @@ export const EVENTS = {
       teamSize: "Team",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     },
     {
       id: "tech-05",
@@ -114,7 +118,8 @@ export const EVENTS = {
       teamSize: "1–2",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     }
   ],
   nontechnical: [
@@ -140,7 +145,8 @@ export const EVENTS = {
       teamSize: "2–3",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     },
     {
       id: "non-02",
@@ -164,7 +170,8 @@ export const EVENTS = {
       teamSize: "2–3",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     },
     {
       id: "non-03",
@@ -187,7 +194,8 @@ export const EVENTS = {
       teamSize: "2–3",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     },
     {
       id: "non-04",
@@ -209,7 +217,8 @@ export const EVENTS = {
       teamSize: "Team",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     },
     {
       id: "non-05",
@@ -235,7 +244,8 @@ export const EVENTS = {
       teamSize: "1",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "3rd floor MB"
+      venue: "",
+      deadline: "25.09.2026"
     }
   ],
   workshops: []
