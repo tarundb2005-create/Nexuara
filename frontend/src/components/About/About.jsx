@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { TEAM_MEMBERS } from "../../data/data";
-
+import ShipSVG from "../Loader/ShipSVG";
 /* ── Avatar Component ────────────────────────────────────────── */
 function Avatar({ member, size = 100 }) {
   const initials = member.name.split(" ").map(n => n[0]).join("").slice(0, 2);
@@ -361,7 +361,7 @@ function CrewCard({ member, index, onClick }) {
       <h3 className="font-cinzel" style={{
         fontSize: "1.05rem",
         fontWeight: 800,
-        color: hovered ? "#c0102a" : "#f0e8e8",
+        color: hovered ? "#c0102a" : "#5c4033",
         marginBottom: "0.25rem",
         transition: "color 0.3s",
       }}>
@@ -384,8 +384,9 @@ function CrewCard({ member, index, onClick }) {
       {/* Department */}
       <div style={{
         fontSize: "0.78rem",
-        color: "rgba(232,223,200,0.5)",
+        color: "rgba(92, 64, 51, 0.7)",
         marginBottom: "1rem",
+        fontWeight: 600,
       }}>
         {member.dept}
       </div>
@@ -395,10 +396,10 @@ function CrewCard({ member, index, onClick }) {
         marginTop: "0.5rem",
         padding: "0.4rem 0.8rem",
         borderRadius: "8px",
-        background: hovered ? "rgba(192,16,42,0.2)" : "rgba(255,255,255,0.03)",
-        border: `1px solid ${hovered ? "rgba(192,16,42,0.4)" : "rgba(255,255,255,0.06)"}`,
+        background: hovered ? "rgba(192,16,42,0.8)" : "rgba(92, 64, 51, 0.05)",
+        border: `1px solid ${hovered ? "rgba(192,16,42,0.4)" : "rgba(92, 64, 51, 0.2)"}`,
         fontSize: "0.72rem",
-        color: hovered ? "#fff" : "rgba(232,223,200,0.4)",
+        color: hovered ? "#fff" : "rgba(92, 64, 51, 0.7)",
         fontFamily: "Cinzel, serif",
         transition: "all 0.3s",
         display: "inline-flex",
@@ -411,28 +412,51 @@ function CrewCard({ member, index, onClick }) {
   );
 }
 
-/* ── Map Decoration ──────────────────────────────────────────── */
-function MapDecor() {
+/* ── Drawn Island SVG ────────────────────────────────────────── */
+function DrawnIsland({ style, isLeft }) {
   return (
-    <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-        style={{
-          position: "absolute", top: "4rem", right: "4rem",
-          fontSize: "4rem", opacity: 0.05,
-        }}
-      >🧭</motion.div>
+    <svg viewBox="0 0 200 100" style={style} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <g transform={isLeft ? "scale(-1, 1) translate(-200, 0)" : "none"}>
+        {/* Sandy Base */}
+        <path d="M20,80 Q50,60 100,65 T180,80 Q150,100 100,95 T20,80 Z" fill="#e8c396" stroke="#5c4033" strokeWidth="2.5" />
+        {/* Mountains/Rocks */}
+        <path d="M40,75 L70,30 L100,70 Z" fill="#c49b71" stroke="#5c4033" strokeWidth="2.5" />
+        <path d="M80,75 L120,20 L160,75 Z" fill="#ab8158" stroke="#5c4033" strokeWidth="2.5" />
+        {/* Small X marks the spot */}
+        <path d="M135,80 L145,90 M145,80 L135,90" stroke="#8b0000" strokeWidth="3" strokeLinecap="round" />
+        {/* Palm Tree */}
+        <path d="M120,70 Q130,50 125,35" fill="none" stroke="#5c4033" strokeWidth="4" strokeLinecap="round" />
+        <path d="M125,35 Q140,40 145,30 Q130,30 125,35 Z" fill="#4a5d23" stroke="#2e3b16" strokeWidth="1.5"/>
+        <path d="M125,35 Q120,20 110,25 Q120,30 125,35 Z" fill="#4a5d23" stroke="#2e3b16" strokeWidth="1.5"/>
+        <path d="M125,35 Q135,20 145,20 Q135,25 125,35 Z" fill="#4a5d23" stroke="#2e3b16" strokeWidth="1.5"/>
+      </g>
+    </svg>
+  );
+}
 
+/* ── Treasure Map Background ─────────────────────────────────── */
+function TreasureMapBackground() {
+  return (
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0, backgroundColor: "#e8d3a7" }}>
+      {/* SVG noise texture for parchment look */}
+      <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.35, pointerEvents: "none" }}>
+        <filter id="noise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)" />
+      </svg>
+      {/* Vignette for burnt/aged edges */}
       <div style={{
-        position: "absolute", bottom: "3rem", left: "3rem",
-        fontSize: "3rem", opacity: 0.05,
-        transform: "scaleX(-1)",
-      }}>⛵</div>
-
-      <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} opacity="0.04">
-        <line x1="0" y1="0" x2="100%" y2="100%" stroke="#c0102a" strokeWidth="1" strokeDasharray="8,12" />
-        <line x1="100%" y1="0" x2="0" y2="100%" stroke="#c0102a" strokeWidth="1" strokeDasharray="8,12" />
+        position: "absolute", inset: 0,
+        boxShadow: "inset 0 0 120px rgba(92, 64, 51, 0.8)",
+        pointerEvents: "none"
+      }} />
+      {/* Map grid lines */}
+      <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.15, pointerEvents: "none" }}>
+        <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+          <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#5c4033" strokeWidth="1"/>
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
     </div>
   );
@@ -441,82 +465,216 @@ function MapDecor() {
 /* ── About Section Main Component ────────────────────────────── */
 export default function About() {
   const [selectedMember, setSelectedMember] = useState(null);
+  const containerRef = useRef(null);
+
+  // Scroll tracking for the ship
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Dynamically generate the path and animation points based on crew size
+  const N = TEAM_MEMBERS.length;
+  const segment = 1 / (N + 1);
+
+  const xInput = [0];
+  const xOutput = ["0vw"];
+  const rotInput = [0];
+  const rotOutput = [0];
+  
+  let pathD = "M 50,0 ";
+
+  for (let i = 1; i <= N; i++) {
+    const P = i * segment;
+    const startPlateau = P - (segment * 0.2); 
+    const endPlateau = P + (segment * 0.2);
+    const isLeft = (i - 1) % 2 === 0;
+    const pos = isLeft ? "-22vw" : "22vw";
+    const xSvg = isLeft ? 28 : 72;
+    
+    // X Position
+    xInput.push(startPlateau, endPlateau);
+    xOutput.push(pos, pos);
+
+    // Rotation
+    rotInput.push(startPlateau);
+    rotOutput.push(isLeft ? -15 : 15);
+    rotInput.push(P);
+    rotOutput.push(0); // Straighten out when stopped!
+    rotInput.push(endPlateau);
+    rotOutput.push(isLeft ? 15 : -15);
+
+    // SVG Path (1000vh height, 100vh viewport = 900vh scrollable)
+    const yStart = startPlateau * 900 + 40;
+    const yEnd = endPlateau * 900 + 40;
+
+    if (i === 1) {
+      pathD += `C 50,${yStart/2} ${xSvg},${yStart/2} ${xSvg},${yStart} `;
+    } else {
+      const prevIsLeft = (i - 2) % 2 === 0;
+      const prevXSvg = prevIsLeft ? 28 : 72;
+      const prevEndPlateau = (i - 1) * segment + (segment * 0.2);
+      const prevYEnd = prevEndPlateau * 900 + 40;
+      const midY = (prevYEnd + yStart) / 2;
+      pathD += `C ${prevXSvg},${midY} ${xSvg},${midY} ${xSvg},${yStart} `;
+    }
+    pathD += `L ${xSvg},${yEnd} `; // Vertical straight line for the plateau!
+  }
+
+  xInput.push(1);
+  xOutput.push("0vw");
+  rotInput.push(1);
+  rotOutput.push(0);
+  
+  const lastEndPlateau = N * segment + (segment * 0.2);
+  const lastYEnd = lastEndPlateau * 900 + 40;
+  const lastXSvg = ((N - 1) % 2 === 0) ? 28 : 72;
+  pathD += `C ${lastXSvg},${(lastYEnd + 1000)/2} 50,${(lastYEnd + 1000)/2} 50,1000`;
+
+  const shipX = useTransform(scrollYProgress, xInput, xOutput);
+  const shipRotate = useTransform(scrollYProgress, rotInput, rotOutput);
+
+  // Base Y offset to keep ship in upper-middle of viewport
+  const shipY = useTransform(scrollYProgress, [0, 1], ["20vh", "20vh"]);
 
   return (
     <section
       id="about"
       style={{
-        padding: "6rem 0",
-        background: "transparent",
         position: "relative",
-        overflow: "hidden",
+        background: "#e8d3a7", // Match map base color
       }}
     >
-      <MapDecor />
+      <style>{`
+        .crew-card {
+          border-color: rgba(92, 64, 51, 0.3) !important;
+          background: rgba(255,255,255,0.4) !important;
+          backdrop-filter: blur(4px);
+        }
+        .crew-card:hover {
+          background: rgba(255,255,255,0.6) !important;
+          border-color: rgba(192,16,42,0.6) !important;
+        }
+        .text-gold-gradient {
+          background: linear-gradient(to right, #8b0000, #5c4033);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .timeline-card-wrapper {
+          position: absolute;
+          transform: translateY(-50%);
+          width: 75%;
+          z-index: 2;
+        }
+        .timeline-card-wrapper.left { left: 5%; right: auto; }
+        .timeline-card-wrapper.right { right: 5%; left: auto; }
+        
+        @media (min-width: 768px) {
+          .timeline-card-wrapper { width: 40%; }
+          .timeline-card-wrapper.left { left: 8%; }
+          .timeline-card-wrapper.right { right: 8%; }
+        }
+      `}</style>
 
-      <div className="section-container" style={{ position: "relative", zIndex: 2 }}>
-        {/* Section Header */}
+      {/* ── STICKY TREASURE MAP & SHIP ── */}
+      <div style={{
+        position: "sticky",
+        top: 0,
+        height: "100vh",
+        width: "100%",
+        overflow: "hidden",
+        zIndex: 0,
+      }}>
+        <TreasureMapBackground />
+        
+        {/* Scary Ship sailing down */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: "center", marginBottom: "1rem" }}
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: 0,
+            x: shipX,
+            y: shipY,
+            rotate: shipRotate,
+            marginLeft: "-140px", // Half of width
+            width: "280px",
+            filter: "drop-shadow(0 15px 25px rgba(92,64,51,0.5))",
+            zIndex: 10
+          }}
         >
-          <div style={{ fontSize: "1.5rem", letterSpacing: "0.3em", color: "rgba(192,16,42,0.3)", marginBottom: "0.75rem" }}>
+          <ShipSVG style={{ width: "100%", height: "100%" }} />
+        </motion.div>
+      </div>
+
+      {/* ── SCROLLING TIMELINE CONTAINER ── */}
+      {/* 1000vh creates enough scroll space for the journey */}
+      <div ref={containerRef} style={{ position: "relative", zIndex: 1, height: "1000vh", marginTop: "-100vh", pointerEvents: "none" }}>
+        
+        {/* Dashed SVG Route connecting ports */}
+        <svg viewBox="0 0 100 1000" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 0 }}>
+          <path 
+            d={pathD}
+            fill="none" stroke="#8b0000" strokeWidth="0.4" strokeDasharray="1.5 1.5" opacity="0.65" 
+          />
+        </svg>
+
+        {/* Section Header */}
+        <div style={{ position: "absolute", top: "2%", width: "100%", textAlign: "center", pointerEvents: "auto" }}>
+          <div style={{ fontSize: "1.5rem", letterSpacing: "0.3em", color: "#8b0000", marginBottom: "0.75rem" }}>
             ─── ☠ ───
           </div>
           <h2 className="font-cinzel text-gold-gradient" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 900, marginBottom: "0.75rem" }}>
             The Nexaura Crew
           </h2>
-          <p style={{ color: "rgba(232,223,200,0.5)", maxWidth: "500px", margin: "0 auto", lineHeight: 1.7, fontSize: "0.95rem" }}>
-            Meet the pirates behind Nexaura'26. Tap any crew member to view their photo, full profile, and contact details.
+          <p style={{ color: "#5c4033", maxWidth: "500px", margin: "0 auto", lineHeight: 1.7, fontSize: "0.95rem", fontWeight: 600 }}>
+            Follow the treasure map to discover the pirates waiting at each island port.
           </p>
-          <div style={{ fontSize: "1.5rem", letterSpacing: "0.3em", color: "rgba(192,16,42,0.3)", marginTop: "0.75rem" }}>
-            ─── ⚓ ───
-          </div>
-        </motion.div>
-
-        {/* Crew Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-          gap: "1.5rem",
-          marginTop: "3rem",
-        }}>
-          {TEAM_MEMBERS.map((member, i) => (
-            <CrewCard
-              key={member.id}
-              member={member}
-              index={i}
-              onClick={() => setSelectedMember(member)}
-            />
-          ))}
         </div>
 
-        {/* Bottom divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2 }}
-          style={{
-            marginTop: "4rem",
-            height: "1px",
-            background: "linear-gradient(90deg, transparent, rgba(192,16,42,0.3), transparent)",
-          }}
-        />
+        {/* Crew Islands */}
+        {TEAM_MEMBERS.map((member, i) => {
+          const isLeft = i % 2 === 0;
+          const P = (i + 1) * segment;
+          const topPercent = P * 90 + 4;
+          
+          return (
+            <div 
+              key={member.id} 
+              className={`timeline-card-wrapper ${isLeft ? 'left' : 'right'}`}
+              style={{ top: `${topPercent}%`, pointerEvents: "auto" }}
+            >
+              {/* The Drawn Island behind the card */}
+              <DrawnIsland 
+                isLeft={isLeft}
+                style={{ 
+                  position: "absolute", 
+                  top: "-60px", // Adjusted to place island center closer to card center
+                  [isLeft ? "right" : "left"]: "-80px", 
+                  width: "220px", 
+                  zIndex: -1,
+                  opacity: 0.9,
+                  filter: "drop-shadow(0 5px 10px rgba(92,64,51,0.3))"
+                }} 
+              />
+              
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ margin: "0px 0px -42% 0px" }} // Triggers exactly when the boat docks at startPlateau (58vh down)
+                transition={{ duration: 0.5, ease: "easeOut", type: "spring", bounce: 0.4 }}
+              >
+                <CrewCard member={member} onClick={() => setSelectedMember(member)} />
+              </motion.div>
+            </div>
+          );
+        })}
 
-        {/* Nexaura Signature */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: "center", marginTop: "2rem" }}
-        >
-          <div className="font-pirata" style={{ fontSize: "1.8rem", color: "rgba(192,16,42,0.5)" }}>
-            ─── NEXAURA'26 ───
+        {/* End of the Line */}
+        <div style={{ position: "absolute", top: "95%", width: "100%", textAlign: "center", pointerEvents: "auto" }}>
+          <div className="font-pirata" style={{ fontSize: "2rem", color: "#8b0000" }}>
+            ─── TREASURE FOUND ───
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Crew Detail Modal */}
