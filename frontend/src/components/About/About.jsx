@@ -355,7 +355,7 @@ function CrewCard({ member, index, onClick }) {
           src={member.avatar || "/default-avatar.png"} 
           alt={member.name}
           style={{
-            width: "100%", height: "100%", objectFit: "cover",
+            width: "100%", height: "100%", objectFit: "cover", objectPosition: "top",
             filter: "sepia(0.85) contrast(1.2) brightness(0.9) grayscale(0.2)",
             transition: "filter 0.4s",
           }}
