@@ -19,7 +19,7 @@ export const EVENTS = {
       teamSize: "2",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     },
     {
@@ -43,7 +43,7 @@ export const EVENTS = {
       teamSize: "2–3",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     },
     {
@@ -69,7 +69,7 @@ export const EVENTS = {
       teamSize: "2",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     },
     {
@@ -93,7 +93,7 @@ export const EVENTS = {
       teamSize: "Team",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     },
     {
@@ -118,7 +118,7 @@ export const EVENTS = {
       teamSize: "1–2",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     }
   ],
@@ -145,7 +145,7 @@ export const EVENTS = {
       teamSize: "2–3",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     },
     {
@@ -170,7 +170,7 @@ export const EVENTS = {
       teamSize: "2–3",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     },
     {
@@ -194,7 +194,7 @@ export const EVENTS = {
       teamSize: "2–3",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     },
     {
@@ -217,7 +217,7 @@ export const EVENTS = {
       teamSize: "Team",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     },
     {
@@ -244,7 +244,7 @@ export const EVENTS = {
       teamSize: "1",
       date: "30 Sep 2026",
       time: "10.30 AM",
-      venue: "",
+      venue: "3rd Floor , MB",
       deadline: "25.09.2026"
     }
   ],
