@@ -210,7 +210,6 @@ function EventCard({ event, index, onClick }) {
         borderTop: "1px solid rgba(192,16,42,0.12)",
       }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
-          <span style={{ fontSize: "0.75rem", color: "rgba(240,232,232,0.4)" }}>📅 {event.date}</span>
           <span style={{ fontSize: "0.7rem", color: "rgba(192,16,42,0.7)" }}>⏳ Ends: {event.deadline}</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>

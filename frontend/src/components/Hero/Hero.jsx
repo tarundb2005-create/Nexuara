@@ -193,7 +193,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.7 }}
-          style={{ fontFamily: "Inter, sans-serif", fontSize: "0.85rem", color: "rgba(240,232,232,0.45)", marginBottom: "3rem", maxWidth: "600px", margin: "0 auto 3rem", textTransform: "uppercase", letterSpacing: "0.1em" }}
+          style={{ fontFamily: "Inter, sans-serif", fontSize: "0.85rem", color: "rgba(240,232,232,0.9)", fontWeight: 900, marginBottom: "3rem", maxWidth: "600px", margin: "0 auto 3rem", textTransform: "uppercase", letterSpacing: "0.1em" }}
         >
           Conducted by the Department of Artificial Intelligence and Data Science
         </motion.p>
