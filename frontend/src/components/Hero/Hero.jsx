@@ -138,7 +138,7 @@ export default function Hero() {
             borderRadius: "100px", padding: "0.4rem 1.25rem",
             fontFamily: "Cinzel, serif", fontSize: "0.68rem", letterSpacing: "0.25em", color: "rgba(192,16,42,0.8)",
           }}>
-            <span>⚓</span><span>COLLEGE ANNUAL SYMPOSIUM</span><span>⚓</span>
+            <span>⚓</span><span>NATIONAL LEVEL SYMPOSIUM</span><span>⚓</span>
           </div>
         </motion.div>
 

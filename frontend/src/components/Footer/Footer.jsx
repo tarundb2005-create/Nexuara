@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { COLLEGE_NAME, COLLEGE_LOCATION } from "../../data/data";
 
 export default function Footer() {
@@ -38,20 +39,17 @@ export default function Footer() {
             <h4 className="font-cinzel" style={{ fontSize: "0.75rem", letterSpacing: "0.2em", color: "rgba(192,16,42,0.6)", textTransform: "uppercase", marginBottom: "1rem" }}>
               Navigate
             </h4>
-            {["home", "events", "register", "about"].map(id => (
-              <button
+            {["home", "events", "about"].map(id => (
+              <Link
                 key={id}
-                onClick={() => scrollTo(id)}
+                to={id === "home" ? "/" : `/${id}`}
                 style={{
                   display: "block",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
+                  textDecoration: "none",
                   color: "rgba(240,232,232,0.3)",
                   fontFamily: "Inter, sans-serif",
                   fontSize: "0.875rem",
                   padding: "0.3rem 0",
-                  textAlign: "left",
                   transition: "color 0.3s",
                   textTransform: "capitalize",
                 }}
@@ -59,7 +57,7 @@ export default function Footer() {
                 onMouseLeave={e => e.target.style.color = "rgba(240,232,232,0.3)"}
               >
                 {id.charAt(0).toUpperCase() + id.slice(1)}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -68,7 +66,7 @@ export default function Footer() {
             <h4 className="font-cinzel" style={{ fontSize: "0.75rem", letterSpacing: "0.2em", color: "rgba(192,16,42,0.6)", textTransform: "uppercase", marginBottom: "1rem" }}>
               Events
             </h4>
-            {["Technical Events", "Non-Technical", "Cultural Night"].map(e => (
+            {["Technical Events", "Non-Technical"].map(e => (
               <div key={e} style={{ color: "rgba(232,223,200,0.45)", fontSize: "0.875rem", padding: "0.3rem 0" }}>{e}</div>
             ))}
           </div>
