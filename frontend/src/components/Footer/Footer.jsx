@@ -64,10 +64,13 @@ export default function Footer() {
           {/* Events */}
           <div>
             <h4 className="font-cinzel" style={{ fontSize: "0.75rem", letterSpacing: "0.2em", color: "rgba(192,16,42,0.6)", textTransform: "uppercase", marginBottom: "1rem" }}>
-              Events
+              <Link to="/events" style={{ textDecoration: "none", color: "inherit" }}>Events</Link>
             </h4>
-            {["Technical Events", "Non-Technical"].map(e => (
-              <div key={e} style={{ color: "rgba(232,223,200,0.45)", fontSize: "0.875rem", padding: "0.3rem 0" }}>{e}</div>
+            {[
+              { label: "Technical Events", tab: "technical" },
+              { label: "Non-Technical", tab: "nontechnical" }
+            ].map(e => (
+              <Link to={`/events?tab=${e.tab}`} key={e.label} style={{ display: "block", color: "rgba(232,223,200,0.45)", fontSize: "0.875rem", padding: "0.3rem 0", textDecoration: "none", transition: "color 0.3s" }} onMouseEnter={el => el.target.style.color = "#c0102a"} onMouseLeave={el => el.target.style.color = "rgba(232,223,200,0.45)"}>{e.label}</Link>
             ))}
           </div>
 

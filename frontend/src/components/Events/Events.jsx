@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { EVENTS } from "../../data/data";
 
@@ -232,8 +233,19 @@ function EventCard({ event, index, onClick }) {
 
 /* ── Events Section ──────────────────────────────────────────── */
 export default function Events() {
-  const [activeTab, setActiveTab] = useState("technical");
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const initialTab = searchParams.get("tab") || "technical";
+
+  const [activeTab, setActiveTab] = useState(initialTab);
   const [selected,  setSelected]  = useState(null);
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab && (tab === "technical" || tab === "nontechnical")) {
+      setActiveTab(tab);
+    }
+  }, [location.search]);
 
   const events = EVENTS[activeTab] || [];
 

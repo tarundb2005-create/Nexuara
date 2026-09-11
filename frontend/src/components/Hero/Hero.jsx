@@ -184,19 +184,24 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
-          style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(0.9rem, 2.2vw, 1.25rem)", color: "rgba(240,232,232,0.55)", letterSpacing: "0.08em", marginBottom: "1rem", maxWidth: "520px", margin: "0 auto 1rem" }}
+          style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(0.9rem, 2vw, 1.25rem)", color: "rgba(240,232,232,0.55)", letterSpacing: "0.08em", marginBottom: "1rem", maxWidth: "100%", whiteSpace: "nowrap", margin: "0 auto 1rem" }}
         >
-          Where Technology Meets Adventure · 30th September 2026
+          <span style={{ color: "#ff4d62", fontWeight: "bold" }}>30th September 2026</span>
         </motion.p>
         
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.7 }}
-          style={{ fontFamily: "Inter, sans-serif", fontSize: "0.85rem", color: "rgba(240,232,232,0.9)", fontWeight: 900, marginBottom: "3rem", maxWidth: "600px", margin: "0 auto 3rem", textTransform: "uppercase", letterSpacing: "0.1em" }}
+          style={{ fontFamily: "Inter, sans-serif", marginBottom: "3rem", textAlign: "center", textTransform: "uppercase", letterSpacing: "0.1em" }}
         >
-          Conducted by the Department of Artificial Intelligence and Data Science
-        </motion.p>
+          <div style={{ fontSize: "1.2rem", fontWeight: 700, color: "rgba(240,232,232,0.9)", marginBottom: "0.5rem" }}>
+            conducted by
+          </div>
+          <div style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)", fontWeight: 900, background: "linear-gradient(135deg, #ff4d62, #c0102a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", filter: "drop-shadow(0 0 15px rgba(192,16,42,0.5))", lineHeight: 1.2 }}>
+            department of AIDS
+          </div>
+        </motion.div>
 
         {/* Countdown */}
         <motion.div
