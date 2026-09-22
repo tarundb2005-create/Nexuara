@@ -108,7 +108,8 @@ function EventModal({ event, onClose, onRegister }) {
               { icon: "🕐", label: "Time",      value: event.time },
               { icon: "📍", label: "Venue",     value: event.venue },
               { icon: "⏳", label: "Deadline",  value: event.deadline },
-            ].map(({ icon, label, value }) => (
+              { icon: "📞", label: "Contact",   value: event.contact },
+            ].filter(item => item.value).map(({ icon, label, value }) => (
               <div key={label} style={{
                 background: "rgba(255,255,255,0.04)",
                 border: "1px solid rgba(192,16,42,0.2)",

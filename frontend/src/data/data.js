@@ -12,15 +12,17 @@ export const EVENTS = {
         "Teams may choose which member participates in each round.",
         "Only teams shortlisted in Round 1 will proceed to Round 2.",
         "All challenges must be completed within the specified time limit.",
+        "Participants must bring their own laptop.",
+        "Participants must arrange their own internet/network connection, if required.",
         "Use of unauthorized resources, external assistance, or any unfair practice is strictly prohibited.",
         "Any form of malpractice will result in immediate disqualification.",
         "The judges' decision will be final."
       ],
       teamSize: "2",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 63692 69993"
     },
     {
       id: "tech-02",
@@ -42,9 +44,9 @@ export const EVENTS = {
       ],
       teamSize: "2–3",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 86101 69634"
     },
     {
       id: "tech-03",
@@ -68,9 +70,9 @@ export const EVENTS = {
       ],
       teamSize: "2",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 78069 35866"
     },
     {
       id: "tech-04",
@@ -92,9 +94,9 @@ export const EVENTS = {
       ],
       teamSize: "Team",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 73074 80264"
     },
     {
       id: "tech-05",
@@ -103,12 +105,9 @@ export const EVENTS = {
       category: "technical",
       tagline: "Paper Presentation",
       description: "An academic presentation event where participants present research ideas, technical concepts, or innovative solutions on a selected topic. The event evaluates subject knowledge, research quality, originality, creativity, communication, presentation skills, and Q&A performance.",
-      submissionEmail: "aids.events@npsbcet.edu.in",
       rules: [
         "Each participant/team will be given 5–7 minutes for the presentation.",
-        "The submitted paper must be 4–6 pages only.",
-        "Each team must prepare 7–10 slides for the presentation.",
-        "The paper and presentation must be submitted on or before 25.09.2026.",
+        "Participants must submit their paper or abstract before the specified deadline.",
         "The presentation topic must be relevant to the given theme or an approved topic.",
         "All submitted and presented content must be original and properly referenced.",
         "Plagiarism or copied content will result in immediate disqualification.",
@@ -118,9 +117,8 @@ export const EVENTS = {
       ],
       teamSize: "1–2",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA"
     }
   ],
   nontechnical: [
@@ -145,9 +143,9 @@ export const EVENTS = {
       ],
       teamSize: "2–3",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 73395 35030, +91 73059 22915"
     },
     {
       id: "non-02",
@@ -170,9 +168,9 @@ export const EVENTS = {
       ],
       teamSize: "2–3",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 95001 69745"
     },
     {
       id: "non-03",
@@ -194,9 +192,9 @@ export const EVENTS = {
       ],
       teamSize: "2–3",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 86820 83783"
     },
     {
       id: "non-04",
@@ -217,9 +215,9 @@ export const EVENTS = {
       ],
       teamSize: "Team",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 97888 82341"
     },
     {
       id: "non-05",
@@ -244,9 +242,9 @@ export const EVENTS = {
       ],
       teamSize: "1",
       date: "30 Sep 2026",
-      time: "10.30 AM",
-      venue: "3rd Floor , MB",
-      deadline: "25.09.2026"
+      time: "TBA",
+      venue: "TBA",
+      contact: "+91 86109 02429"
     }
   ],
   workshops: []
